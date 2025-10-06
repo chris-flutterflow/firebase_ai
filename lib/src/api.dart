@@ -1053,10 +1053,9 @@ Candidate _parseCandidate(Object? jsonObject) {
 }
 
 PromptFeedback _parsePromptFeedback(Object jsonObject) {
-  // NEW: tolerate completely empty object {}
-  final Map m when m.isEmpty => PromptFeedback(null, null, const <SafetyRating>[]),
-
   return switch (jsonObject) {
+    // NEW: tolerate completely empty object {}
+    final Map m when m.isEmpty => PromptFeedback(null, null, const <SafetyRating>[]),
     {
       'safetyRatings': final List<Object?> safetyRatings,
     } =>
